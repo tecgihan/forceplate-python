@@ -53,6 +53,37 @@
    pip install -r requirements.txt
    ```
 
+3. ftdi_sioモジュールのアンロード（実行時に必要）
+
+   Linuxのftdi_sioカーネルモジュールがデバイスを先に確保するため、D2XXライブラリからアクセスできません。
+   デバイス使用前に以下を実行してください：
+   ```bash
+   sudo rmmod ftdi_sio
+   sudo rmmod usbserial
+   ```
+
+### WSL2 (Windows Subsystem for Linux)
+
+WSL2でUSBデバイスを使用するには、usbipd-winが必要です。
+
+1. Windows側でusbipd-winをインストール
+   ```powershell
+   winget install usbipd
+   ```
+
+2. USBデバイスをWSLにアタッチ（PowerShell管理者）
+   ```powershell
+   usbipd list                        # BUSIDを確認
+   usbipd bind --busid <BUSID>        # 初回のみ
+   usbipd attach --wsl --busid <BUSID>
+   ```
+
+3. WSL側でftdi_sioをアンロード
+   ```bash
+   sudo rmmod ftdi_sio
+   sudo rmmod usbserial
+   ```
+
 ## ファイル構成
 
 | ファイル | 説明 |
