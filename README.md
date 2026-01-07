@@ -19,11 +19,37 @@
 
 ## インストール
 
+### Windows
+
 1. FTDI D2XXドライバをインストール
    - https://ftdichip.com/drivers/d2xx-drivers/
+   - または、デバイス接続時に自動インストールされます
 
 2. Pythonパッケージのインストール
    ```
+   pip install -r requirements.txt
+   ```
+
+### Linux (Ubuntu/Debian)
+
+1. FTDI D2XXライブラリをインストール
+   ```bash
+   # ダウンロード
+   wget https://ftdichip.com/wp-content/uploads/2024/11/libftd2xx-x86_64-1.4.33.tgz
+
+   # 展開
+   tar xzf libftd2xx-x86_64-1.4.33.tgz
+
+   # インストール
+   cd release/build
+   sudo cp libftd2xx.so.1.4.33 /usr/local/lib/
+   sudo ln -sf /usr/local/lib/libftd2xx.so.1.4.33 /usr/local/lib/libftd2xx.so
+   sudo chmod 0755 /usr/local/lib/libftd2xx.so.1.4.33
+   sudo ldconfig
+   ```
+
+2. Pythonパッケージのインストール
+   ```bash
    pip install -r requirements.txt
    ```
 
