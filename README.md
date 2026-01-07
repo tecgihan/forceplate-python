@@ -34,17 +34,17 @@
 
 1. FTDI D2XXライブラリをインストール
    ```bash
-   # ダウンロード
-   wget https://ftdichip.com/wp-content/uploads/2024/11/libftd2xx-x86_64-1.4.33.tgz
+   # ダウンロード（バージョンは最新を確認: https://ftdichip.com/drivers/d2xx-drivers/）
+   wget https://ftdichip.com/wp-content/uploads/2025/11/libftd2xx-linux-x86_64-1.4.34.tgz
 
    # 展開
-   tar xzf libftd2xx-x86_64-1.4.33.tgz
+   tar xzf libftd2xx-linux-x86_64-1.4.34.tgz
 
    # インストール
-   cd release/build
-   sudo cp libftd2xx.so.1.4.33 /usr/local/lib/
-   sudo ln -sf /usr/local/lib/libftd2xx.so.1.4.33 /usr/local/lib/libftd2xx.so
-   sudo chmod 0755 /usr/local/lib/libftd2xx.so.1.4.33
+   cd linux-x86_64
+   sudo cp libftd2xx.so /usr/local/lib/libftd2xx.so.1.4.34
+   sudo ln -sf /usr/local/lib/libftd2xx.so.1.4.34 /usr/local/lib/libftd2xx.so
+   sudo chmod 0755 /usr/local/lib/libftd2xx.so.1.4.34
    sudo ldconfig
    ```
 
