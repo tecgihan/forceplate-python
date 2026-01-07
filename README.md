@@ -62,6 +62,23 @@
    sudo rmmod usbserial
    ```
 
+4. udevルールの設定（sudoなしで実行する場合）
+
+   デフォルトではUSBデバイスへのアクセスにroot権限が必要です。
+   以下のudevルールを追加すると、一般ユーザーでも実行できます：
+   ```bash
+   # udevルールを作成
+   sudo tee /etc/udev/rules.d/99-ftdi.rules << 'EOF'
+   # FTDI FT232 - allow all users
+   SUBSYSTEM=="usb", ATTR{idVendor}=="0403", ATTR{idProduct}=="6001", MODE="0666"
+   EOF
+
+   # ルールを再読み込み
+   sudo udevadm control --reload-rules
+   sudo udevadm trigger
+   ```
+   設定後、USBデバイスを再接続してください。
+
 ### WSL2 (Windows Subsystem for Linux)
 
 WSL2でUSBデバイスを使用するには、usbipd-winが必要です。
